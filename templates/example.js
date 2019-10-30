@@ -823,7 +823,7 @@ public class MainApplication extends Application implements ReactApplication {
       `import React, {Component} from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 
-export default class Menu extends Component {
+export default class App extends Component {
   static navigationItem = {
     titleItem: {
       title: '${name} 演示',
