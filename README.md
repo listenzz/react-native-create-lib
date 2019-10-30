@@ -23,8 +23,16 @@ npm i -g @react-native-community/cli
 
 安装本库:
 
+首先 clone 本库：
+
 ```
-$ npm install -g git@git.shundaojia.com:ReactNative/react-native-create-lib.git
+$ git clone git@git.shundaojia.com:ReactNative/react-native-create-lib.git
+```
+
+cd 到本库根目录
+
+```
+$ npm install -g .
 ```
 
 ## Command-line usage
@@ -32,7 +40,7 @@ $ npm install -g git@git.shundaojia.com:ReactNative/react-native-create-lib.git
 Navigate into an empty directory to execute the command.
 
 ```
-$ @sdcx/create-react-create-lib MyFancyLibrary
+$ react-native-create-lib MyFancyLibrary
 ```
 
 This will create the folder `MyFancyLibrary` in which the library will be created in.
@@ -44,7 +52,7 @@ $ npm install
 ```
 
 ```
-使用: @sdcx/create-react-create-lib [options] <name>
+使用: react-native-create-lib [options] <name>
 
 选项:
 
