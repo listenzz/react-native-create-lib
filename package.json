@@ -1,0 +1,44 @@
+{
+  "name": "react-native-create-lib",
+  "version": "1.0.0",
+  "description": "Tool to create a React Native library module or view module with a single command",
+  "bin": "bin/cli.js",
+  "main": "lib/lib.js",
+  "scripts": {
+    "jest": "jest",
+    "test": "npm run lint && npm run jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.shundaojia.com:ReactNative/react-native-create-lib.git"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "library",
+    "create"
+  ],
+  "files": [
+    "bin",
+    "lib",
+    "templates",
+    "README.md"
+  ],
+  "author": "listen <listenzz@163.com>",
+  "license": "MIT",
+  "homepage": "https://git.shundaojia.com/ReactNative/react-native-create-lib#readme",
+  "dependencies": {
+    "commander": "^3.0.1",
+    "execa": "^2.0.4",
+    "fs-extra": "^8.1.0",
+    "jsonfile": "^5.0.0",
+    "node-emoji": "^1.10.0",
+    "param-case": "^2.1.1",
+    "pascal-case": "^2.0.1",
+    "update-notifier": "^3.0.1",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
