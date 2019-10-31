@@ -6,30 +6,36 @@
 
 ## Installation
 
-需要最新的 react-native-cli
+需要社区办的 cli
 
-使用以下命令卸载旧的 cli
+卸载旧版 react-native-cli
 
 ```
 npm uninstall -g react-native-cli
 
 ```
 
-使用以下命令安装新的 cli
+安装社区版 cli
 
 ```
 npm i -g @react-native-community/cli
 ```
 
-安装本库:
-
-首先 clone 本库：
+clone 本库
 
 ```
 $ git clone git@git.shundaojia.com:ReactNative/react-native-create-lib.git
 ```
 
 cd 到本库根目录
+
+如果之前安装过，先卸载
+
+```
+$ npm uninstall react-native-create-lib
+```
+
+安装本库
 
 ```
 $ npm install -g .
@@ -60,11 +66,11 @@ $ npm install
   --prefix <prefix>                         The prefix for the library module (Default: ``)
   --module-name <moduleName>                The module library package name to be used in package.json. Default: react-native-(name in param-case)
   --module-prefix <modulePrefix>            The module prefix for the library module, ignored if --module-name is specified (Default: `react-native`)
-  --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.reactlibrary`)
+  --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.sdcx`)
   --platforms <platforms>                   Platforms the library module will be created for - comma separated (Default: `ios,android`)
-  --github-account <githubAccount>          The github account where the library module is hosted (Default: `github_account`)
-  --author-name <authorName>                The author's name (Default: `Your Name`)
-  --author-email <authorEmail>              The author's email (Default: `yourname@email.com`)
+  --github-account <githubAccount>          The github account where the library module is hosted (Default: `sdcx@shundaojia.com`)
+  --author-name <authorName>                The author's name (Default: `顺道出行`)
+  --author-email <authorEmail>              The author's email (Default: `sdcx@shundaojia.com`)
   --license <license>                       The license type (Default: `MIT`)
   --view                                    Generate the module as a very simple native view component
   -h, --help                                output usage information
