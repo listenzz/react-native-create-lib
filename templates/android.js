@@ -40,11 +40,9 @@ dependencies {
 `,
   },
   {
-    // for module without view:
-    name: ({ packageIdentifier, name, view }) =>
-      !view && `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${name}Module.java`,
-    content: ({ packageIdentifier, name, view }) =>
-      !view &&
+    name: ({ packageIdentifier, className }) =>
+      `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Module.java`,
+    content: ({ packageIdentifier, className }) =>
       `package ${packageIdentifier};
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -52,18 +50,18 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
-public class ${name}Module extends ReactContextBaseJavaModule {
+public class ${className}Module extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
 
-    public ${name}Module(ReactApplicationContext reactContext) {
+    public ${className}Module(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
 
     @Override
     public String getName() {
-        return "${name}";
+        return "${className}Module";
     }
 
     @ReactMethod
@@ -75,43 +73,9 @@ public class ${name}Module extends ReactContextBaseJavaModule {
 `,
   },
   {
-    // manager for view:
-    name: ({ packageIdentifier, name, view }) =>
-      view && `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${name}Manager.java`,
-    content: ({ packageIdentifier, name, view }) =>
-      view &&
-      `package ${packageIdentifier};
-
-import android.view.View;
-import androidx.appcompat.widget.AppCompatCheckBox;
-import com.facebook.react.uimanager.SimpleViewManager;
-import com.facebook.react.uimanager.ThemedReactContext;
-
-public class ${name}Manager extends SimpleViewManager<View> {
-
-    public static final String REACT_CLASS = "${name}";
-
-    @Override
-    public String getName() {
-        return REACT_CLASS;
-    }
-
-    @Override
-    public View createViewInstance(ThemedReactContext c) {
-        // TODO: Implement some actually useful functionality
-        AppCompatCheckBox cb = new AppCompatCheckBox(c);
-        cb.setChecked(true);
-        return cb;
-    }
-}
-`,
-  },
-  {
-    // package for module without view:
-    name: ({ packageIdentifier, name, view }) =>
-      !view && `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${name}Package.java`,
-    content: ({ packageIdentifier, name, view }) =>
-      !view &&
+    name: ({ packageIdentifier, className }) =>
+      `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Package.java`,
+    content: ({ packageIdentifier, className }) =>
       `package ${packageIdentifier};
 
 import java.util.Arrays;
@@ -124,46 +88,15 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.facebook.react.bridge.JavaScriptModule;
 
-public class ${name}Package implements ReactPackage {
+public class ${className}Package implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new ${name}Module(reactContext));
+        return Arrays.<NativeModule>asList(new ${className}Module(reactContext));
     }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.emptyList();
-    }
-}
-`,
-  },
-  {
-    // package for manager for view:
-    name: ({ packageIdentifier, name, view }) =>
-      view && `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${name}Package.java`,
-    content: ({ packageIdentifier, name, view }) =>
-      view &&
-      `package ${packageIdentifier};
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.NativeModule;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
-
-public class ${name}Package implements ReactPackage {
-    @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(new ${name}Manager());
     }
 }
 `,

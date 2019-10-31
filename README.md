@@ -6,7 +6,7 @@
 
 ## Installation
 
-需要社区办的 cli
+需要社区版的 cli
 
 卸载旧版 react-native-cli
 
@@ -32,7 +32,7 @@ cd 到本库根目录
 如果之前安装过，先卸载
 
 ```
-$ npm uninstall react-native-create-lib
+$ npm uninstall -g react-native-create-lib
 ```
 
 安装本库
@@ -65,14 +65,12 @@ $ npm install
   -V, --version                             output the version number
   --prefix <prefix>                         The prefix for the library module (Default: ``)
   --module-name <moduleName>                The module library package name to be used in package.json. Default: react-native-(name in param-case)
-  --module-prefix <modulePrefix>            The module prefix for the library module, ignored if --module-name is specified (Default: `react-native`)
   --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.sdcx`)
   --platforms <platforms>                   Platforms the library module will be created for - comma separated (Default: `ios,android`)
-  --github-account <githubAccount>          The github account where the library module is hosted (Default: `sdcx@shundaojia.com`)
+  --github-account <githubAccount>          The github account where the library module is hosted (Default: `sdcx`)
   --author-name <authorName>                The author's name (Default: `顺道出行`)
   --author-email <authorEmail>              The author's email (Default: `sdcx@shundaojia.com`)
   --license <license>                       The license type (Default: `MIT`)
-  --view                                    Generate the module as a very simple native view component
   -h, --help                                output usage information
 ```
 
