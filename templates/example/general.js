@@ -1,23 +1,23 @@
 module.exports = [
   {
     name: () => `App.js`,
-    content: ({ className }) => `import React, {Component} from 'react';
-import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+    content: ({ className }) => `import React, { Component } from 'react'
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 
 export default class App extends Component {
   static navigationItem = {
     titleItem: {
       title: '${className} 演示',
     },
-  };
+  }
 
   constructor(props) {
-    super(props);
-    this.handlePress = this.handlePress.bind(this);
+    super(props)
+    this.handlePress = this.handlePress.bind(this)
   }
 
   handlePress() {
-    console.log('You have pressed me.');
+    console.log('You have pressed me.')
   }
 
   render() {
@@ -25,14 +25,11 @@ export default class App extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>Hello World!</Text>
 
-        <TouchableOpacity
-          onPress={this.handlePress}
-          activeOpacity={0.2}
-          style={styles.button}>
+        <TouchableOpacity onPress={this.handlePress} activeOpacity={0.2} style={styles.button}>
           <Text style={styles.buttonText}>press me</Text>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }
 
@@ -60,26 +57,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 8,
   },
-});`,
+})
+`,
   },
   {
     name: () => 'index.js',
-    content: ({ className }) => `import {
-  ReactRegistry,
-  Navigator,
-  Garden,
-  BarStyleDarkContent,
-} from 'react-native-navigation-hybrid';
-import App from './App';
+    content: ({
+      className,
+    }) => `import { ReactRegistry, Navigator, Garden, BarStyleDarkContent } from 'react-native-navigation-hybrid'
+import App from './App'
 
 Garden.setStyle({
   screenBackgroundColor: '#F8F8F8',
   topBarStyle: BarStyleDarkContent,
-});
+})
 
-ReactRegistry.startRegisterComponent();
-ReactRegistry.registerComponent('${className}', () => App);
-ReactRegistry.endRegisterComponent();
+ReactRegistry.startRegisterComponent()
+ReactRegistry.registerComponent('${className}', () => App)
+ReactRegistry.endRegisterComponent()
 
 Navigator.setRoot({
   stack: {
@@ -91,6 +86,7 @@ Navigator.setRoot({
       },
     ],
   },
-});`,
+})
+`,
   },
 ];
