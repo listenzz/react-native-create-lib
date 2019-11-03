@@ -181,6 +181,7 @@ lib/
   {
     name: () => '.npmignore',
     content: () => `example/
+*/build/
 
 # OSX
 #
