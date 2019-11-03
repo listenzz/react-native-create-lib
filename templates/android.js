@@ -42,7 +42,7 @@ dependencies {
   {
     name: ({ packageIdentifier, className }) =>
       `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Module.java`,
-    content: ({ packageIdentifier, className }) =>
+    content: ({ packageIdentifier, className, clsssNameWithPrefix }) =>
       `package ${packageIdentifier};
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -61,7 +61,7 @@ public class ${className}Module extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "${className}Module";
+        return "${clsssNameWithPrefix}";
     }
 
     @ReactMethod

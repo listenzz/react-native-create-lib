@@ -1,7 +1,7 @@
 module.exports = platform => [
   {
     name: () => 'ios/Podfile',
-    content: ({ moduleName, className }) => `platform :ios, '9.0'
+    content: ({ moduleName, className, clsssNameWithPrefix }) => `platform :ios, '9.0'
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target '${className}' do
@@ -37,7 +37,7 @@ target '${className}' do
     pod 'Folly', :podspec => '../../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
     pod 'NavigationHybrid', :path => '../../node_modules/react-native-navigation-hybrid'
-    pod '${moduleName}', :path => '../../'
+    pod '${clsssNameWithPrefix}', :path => '../../'
 end`,
   },
   {

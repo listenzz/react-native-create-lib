@@ -1,8 +1,8 @@
 module.exports = [
   {
     name: () => 'README.md',
-    content: ({ moduleName }) => {
-      return `# ${moduleName} 使用说明书`;
+    content: ({ clsssNameWithPrefix }) => {
+      return `# ${clsssNameWithPrefix} 使用说明书`;
     },
   },
   {
@@ -86,12 +86,12 @@ module.exports = [
   },
   {
     name: () => 'src/index.ts',
-    content: ({ className }) =>
+    content: ({ clsssNameWithPrefix }) =>
       `import { NativeModules } from 'react-native'
 
-const { LoganModule } = NativeModules
+const { ${clsssNameWithPrefix} } = NativeModules
 
-export default LoganModule
+export default ${clsssNameWithPrefix}
 `,
   },
   {
