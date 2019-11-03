@@ -138,6 +138,13 @@ apply from: file("../../../node_modules/@react-native-community/cli-platform-and
 applyNativeModulesAppBuildGradle(project, "../..")`,
   },
   {
+    name: () => `android/app/src/main/res/values/strings.xml`,
+    content: ({ className }) => `<resources>
+    <string name="app_name">${className}</string>
+</resources>
+`,
+  },
+  {
     name: () => `android/app/src/main/AndroidManifest.xml`,
     content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="${packageIdentifier}.example">
@@ -156,6 +163,17 @@ package="${packageIdentifier}.example">
 	android:label="@string/app_name"
 	android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 	android:windowSoftInputMode="adjustResize">
+
+	<meta-data
+		android:name="android.max_aspect"
+		android:value="2.4" />
+	<meta-data
+		android:name="android.notch_support"
+		android:value="true" />
+	<meta-data
+		android:name="notch.config"
+		android:value="portrait|landscape" />
+		
 	<intent-filter>
 		<action android:name="android.intent.action.MAIN" />
 		<category android:name="android.intent.category.LAUNCHER" />
