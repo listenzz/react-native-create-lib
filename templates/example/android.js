@@ -62,7 +62,7 @@ project.ext.react = [
 		bundleInRelease: true,
 		bundleInDebug  : true,
 		enableHermes   : false,
-		hermesCommand  : "../../../node_modules/hermesvm/%OS-BIN%/hermes",
+		hermesCommand  : "../../../node_modules/hermes-engine/%OS-BIN%/hermes",
 ]
 
 apply from: "../../../node_modules/react-native/react.gradle"
@@ -70,6 +70,7 @@ apply from: "../../../node_modules/react-native/react.gradle"
 def enableHermes = project.ext.react.get("enableHermes", false)
 def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
+def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
 
@@ -120,11 +121,11 @@ android {
 dependencies {
 	implementation 'com.facebook.react:react-native:+'
 	if (enableHermes) {
-		def hermesPath = "../../../node_modules/hermesvm/android/"
+		def hermesPath = "../../../node_modules/hermes-engine/android/"
 		debugImplementation files(hermesPath + "hermes-debug.aar")
 		releaseImplementation files(hermesPath + "hermes-release.aar")
 	} else {
-		implementation 'org.webkit:android-jsc:+'
+		implementation jscFlavor
 	}
 	implementation project(':${moduleName}')
 }
