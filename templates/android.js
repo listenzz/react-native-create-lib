@@ -24,6 +24,12 @@ android {
         versionCode 1
         versionName "1.0.0"
     }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
@@ -31,6 +37,10 @@ dependencies {
     implementation 'com.facebook.react:react-native:+'
 }
 `,
+  },
+  {
+    name: () => `${platform}/proguard-rules.pro`,
+    content: () => ''
   },
   {
     name: () => `${platform}/src/main/AndroidManifest.xml`,
