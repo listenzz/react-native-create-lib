@@ -8,7 +8,7 @@ applyNativeModulesSettingsGradle(settings, "../..")
 include ':app'
 
 include ':${moduleName}'
-project(':${moduleName}').projectDir = new File(rootProject.projectDir, '../../android')`,
+project(':${moduleName}').projectDir = new File(rootProject.projectDir, '../../android')`
   },
   {
     name: () => `android/build.gradle`,
@@ -50,7 +50,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
-      `,
+      `
   },
   {
     name: () => 'android/app/build.gradle',
@@ -136,69 +136,75 @@ into 'libs'
 }
 
 apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
-applyNativeModulesAppBuildGradle(project, "../..")`,
+applyNativeModulesAppBuildGradle(project, "../..")`
   },
   {
     name: () => `android/app/src/main/res/values/strings.xml`,
     content: ({ className }) => `<resources>
     <string name="app_name">${className}</string>
 </resources>
-`,
+`
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
-    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="${packageIdentifier}.example">
+    content: ({
+      packageIdentifier
+    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="${packageIdentifier}.example">
 
-<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNET" />
 
-<application
-	android:name=".MainApplication"
-	android:label="@string/app_name"
-	android:icon="@mipmap/ic_launcher"
-	android:roundIcon="@mipmap/ic_launcher_round"
-	android:allowBackup="false"
-	android:theme="@style/AppTheme">
-	<activity
-	android:name=".MainActivity"
-	android:label="@string/app_name"
-	android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-	android:windowSoftInputMode="adjustResize">
+	<application
+		android:name=".MainApplication"
+		android:label="@string/app_name"
+		android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:allowBackup="false"
+		android:theme="@style/AppTheme">
 
-	<meta-data
-		android:name="android.max_aspect"
-		android:value="2.4" />
-	<meta-data
-		android:name="android.notch_support"
-		android:value="true" />
-	<meta-data
-		android:name="notch.config"
-		android:value="portrait|landscape" />
-		
-	<intent-filter>
-		<action android:name="android.intent.action.MAIN" />
-		<category android:name="android.intent.category.LAUNCHER" />
-	</intent-filter>
-	</activity>
-	<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-</application>
+		<meta-data
+			android:name="android.max_aspect"
+			android:value="2.4" />
+		<meta-data
+			android:name="android.notch_support"
+			android:value="true" />
+		<meta-data
+			android:name="notch.config"
+			android:value="portrait|landscape" />
 
-</manifest>`,
+		<activity
+			android:name=".MainActivity"
+			android:label="@string/app_name"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+			android:windowSoftInputMode="adjustResize">
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN" />
+			<category android:name="android.intent.category.LAUNCHER" />
+		</intent-filter>
+		</activity>
+		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+	</application>
+
+</manifest>`
   },
   {
     name: ({ packageIdentifier }) =>
-      `android/app/src/main/java/${packageIdentifier.split('.').join('/')}/example/MainActivity.java`,
+      `android/app/src/main/java/${packageIdentifier
+        .split('.')
+        .join('/')}/example/MainActivity.java`,
     content: ({ packageIdentifier }) => `package ${packageIdentifier}.example;
   
 import com.navigationhybrid.ReactAppCompatActivity;
 
 public class MainActivity extends ReactAppCompatActivity {
 
-}`,
+}`
   },
   {
     name: ({ packageIdentifier }) =>
-      `android/app/src/main/java/${packageIdentifier.split('.').join('/')}/example/MainApplication.java`,
+      `android/app/src/main/java/${packageIdentifier
+        .split('.')
+        .join('/')}/example/MainApplication.java`,
     content: ({ packageIdentifier, className }) => `package ${packageIdentifier}.example;
 
 import android.app.Application;
@@ -278,6 +284,6 @@ public class MainApplication extends Application implements ReactApplication {
 			}
 		}
 	}
-}`,
-  },
+}`
+  }
 ];

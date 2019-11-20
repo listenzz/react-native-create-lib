@@ -3,11 +3,18 @@ module.exports = [
     name: () => 'README.md',
     content: ({ clsssNameWithPrefix }) => {
       return `# ${clsssNameWithPrefix} 使用说明书`;
-    },
+    }
   },
   {
     name: () => 'package.json',
-    content: ({ moduleName, packageIdentifier, githubAccount, authorName, authorEmail, license }) => `{
+    content: ({
+      moduleName,
+      packageIdentifier,
+      githubAccount,
+      authorName,
+      authorEmail,
+      license
+    }) => `{
   "name": "@sdcx/${moduleName.replace('react-native-', '')}",
   "title": "${moduleName
     .split('-')
@@ -82,7 +89,7 @@ module.exports = [
     "registry": "https://nexus-hk.shundaojia.com/repository/npm-packages/"
   }
 }
-`,
+`
   },
   {
     name: () => 'src/index.ts',
@@ -92,7 +99,7 @@ module.exports = [
 const { ${clsssNameWithPrefix} } = NativeModules
 
 export default ${clsssNameWithPrefix}
-`,
+`
   },
   {
     name: () => '.gitignore',
@@ -166,7 +173,7 @@ Podfile.lock
 # lib
 lib/
 
-`,
+`
   },
   {
     name: () => '.gitattributes',
@@ -176,7 +183,7 @@ lib/
       }
 
       return '';
-    },
+    }
   },
   {
     name: () => '.npmignore',
@@ -244,7 +251,7 @@ buck-out/
 */fastlane/screenshots
 
 # Bundle artifact
-*.jsbundle`,
+*.jsbundle`
   },
   {
     name: () => 'LICENSE',
@@ -271,22 +278,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 `;
-    },
+    }
   },
   {
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
   extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
-  overrides: [
-    {
-      files: ['jest/*'],
-      env: {
-        jest: true,
-      },
-    },
-  ],
-}`,
+}`
   },
   {
     name: () => '.prettierrc.js',
@@ -295,9 +294,8 @@ SOFTWARE.
   trailingComma: 'all',
   jsxBracketSameLine: true,
   singleQuote: true,
-  printWidth: 120,
-  tabWidth: 2,
-}`,
+  printWidth: 100,
+}`
   },
   {
     name: () => 'babel.config.js',
@@ -306,7 +304,7 @@ SOFTWARE.
   presets: ['module:metro-react-native-babel-preset'],
 }
 `;
-    },
+    }
   },
   {
     name: () => 'metro.config.js',
@@ -329,7 +327,7 @@ module.exports = {
   },
 }
 `;
-    },
+    }
   },
   {
     name: () => 'tsconfig.json',
@@ -392,6 +390,6 @@ module.exports = {
   // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 },
 "exclude": ["node_modules", "lib", "babel.config.js", "metro.config.js", "jest.config.js"]
-}`,
-  },
+}`
+  }
 ];
