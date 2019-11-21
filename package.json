@@ -10,13 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.shundaojia.com:ReactNative/react-native-create-lib.git"
+    "url": "https://github.com/listenzz/react-native-create-lib.git"
   },
   "keywords": [
     "react-native",
-    "react",
-    "library",
-    "create"
+    "create",
+    "library"
   ],
   "files": [
     "bin",
@@ -26,7 +25,7 @@
   ],
   "author": "listen <listenzz@163.com>",
   "license": "MIT",
-  "homepage": "https://git.shundaojia.com/ReactNative/react-native-create-lib#readme",
+  "homepage": "https://github.com/listenzz/react-native-create-lib#readme",
   "dependencies": {
     "commander": "^3.0.1",
     "execa": "^2.0.4",

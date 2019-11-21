@@ -65,11 +65,11 @@ $ npm install
   -V, --version                             output the version number
   --prefix <prefix>                         The prefix for the library module (Default: ``)
   --module-name <moduleName>                The module library package name to be used in package.json. Default: react-native-(name in param-case)
-  --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.sdcx`)
+  --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.reactnative`)
   --platforms <platforms>                   Platforms the library module will be created for - comma separated (Default: `ios,android`)
-  --github-account <githubAccount>          The github account where the library module is hosted (Default: `sdcx`)
-  --author-name <authorName>                The author's name (Default: `顺道出行`)
-  --author-email <authorEmail>              The author's email (Default: `sdcx@shundaojia.com`)
+  --github-account <githubAccount>          The github account where the library module is hosted (Default: `github-account`)
+  --author-name <authorName>                The author's name (Default: `author-name`)
+  --author-email <authorEmail>              The author's email (Default: `author-email@gmail.com`)
   --license <license>                       The license type (Default: `MIT`)
   -h, --help                                output usage information
 ```

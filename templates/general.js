@@ -15,14 +15,21 @@ module.exports = [
       authorEmail,
       license
     }) => `{
-  "name": "@sdcx/${moduleName.replace('react-native-', '')}",
-  "title": "${moduleName
-    .split('-')
-    .map(word => word[0].toUpperCase() + word.substr(1))
-    .join(' ')}",
-  "version": "1.0.0",
-  "nativePackage": true,
+  "name": "${moduleName}",
   "description": "TODO",
+  "version": "1.0.0",
+  "keywords": [
+    "react-native"
+  ],
+  "nativePackage": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/${githubAccount}/${moduleName}.git"
+  },
+  "homepage": "https://github.com/${githubAccount}/${moduleName}",
+  "author": "${authorName} <${authorEmail}>",
+  "license": "${license}",
+  "licenseFilename": "LICENSE",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
@@ -36,21 +43,6 @@ module.exports = [
     "run:android": "cd example/android && ./gradlew installDebug && npm run start:android",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/${githubAccount}/${moduleName}.git",
-    "baseUrl": "https://github.com/${githubAccount}/${moduleName}"
-  },
-  "keywords": [
-    "react-native"
-  ],
-  "author": {
-    "name": "${authorName}",
-    "email": "${authorEmail}"
-  },
-  "license": "${license}",
-  "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "^16.8.1",
     "react-native": ">=0.60.4"
@@ -84,9 +76,6 @@ module.exports = [
       "json",
       "node"
     ]
-  },
-  "publishConfig": {
-    "registry": "https://nexus-hk.shundaojia.com/repository/npm-packages/"
   }
 }
 `
