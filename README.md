@@ -21,24 +21,10 @@ npm uninstall -g react-native-cli
 npm i -g @react-native-community/cli
 ```
 
-clone 本库
-
-```
-$ git clone git@git.shundaojia.com:ReactNative/react-native-create-lib.git
-```
-
-cd 到本库根目录
-
-如果之前安装过，先卸载
-
-```
-$ npm uninstall -g react-native-create-lib
-```
-
 安装本库
 
 ```
-$ npm install -g .
+$ npm install -g react-native-create-lib
 ```
 
 ## Command-line usage
