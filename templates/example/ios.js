@@ -1,7 +1,14 @@
 module.exports = platform => [
   {
     name: () => 'ios/Podfile',
-    content: ({ moduleName, className, clsssNameWithPrefix }) => `platform :ios, '9.0'
+    content: ({
+      moduleName,
+      className,
+      clsssNameWithPrefix
+    }) => `source 'https://github.com/artsy/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target '${className}' do
@@ -38,7 +45,7 @@ target '${className}' do
 
     pod 'NavigationHybrid', :path => '../../node_modules/react-native-navigation-hybrid'
     pod '${clsssNameWithPrefix}', :path => '../../'
-end`,
+end`
   },
   {
     name: ({ className }) => `ios/${className}/Info.plist`,
@@ -94,7 +101,7 @@ end`,
         <string>UIInterfaceOrientationPortrait</string>
     </array>
 </dict>
-</plist>`,
+</plist>`
   },
   {
     name: ({ className }) => `ios/${className}.xcodeproj/project.pbxproj`,
@@ -441,7 +448,7 @@ end`,
 /* End XCConfigurationList section */
     };
     rootObject = 91887257236AD544003DC79E /* Project object */;
-}`,
+}`
   },
   {
     name: ({ className }) => `ios/${className}/Base.lproj/LaunchScreen.storyboard`,
@@ -469,6 +476,6 @@ end`,
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-</document>`,
-  },
+</document>`
+  }
 ];
