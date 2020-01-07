@@ -2,7 +2,7 @@ module.exports = [
   {
     name: () => 'README.md',
     content: ({ clsssNameWithPrefix }) => {
-      return `# ${clsssNameWithPrefix} 使用说明书`;
+      return `# ${clsssNameWithPrefix}`;
     }
   },
   {
@@ -62,7 +62,7 @@ module.exports = [
     "metro-react-native-babel-preset": "^0.56.0",
     "react": "16.9.0",
     "react-native": "^0.61.3",
-    "react-native-navigation-hybrid": "^0.17.17",
+    "react-native-navigation-hybrid": "^0.18.0",
     "react-test-renderer": "16.9.0",
     "typescript": "3.5.3"
   },
