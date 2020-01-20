@@ -36,7 +36,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'
 }
-`,
+`
   },
   {
     name: () => `${platform}/proguard-rules.pro`,
@@ -44,11 +44,13 @@ dependencies {
   },
   {
     name: () => `${platform}/src/main/AndroidManifest.xml`,
-    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    content: ({
+      packageIdentifier
+    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="${packageIdentifier}">
 
 </manifest>
-`,
+`
   },
   {
     name: ({ packageIdentifier, className }) =>
@@ -70,6 +72,7 @@ public class ${className}Module extends ReactContextBaseJavaModule {
         this.reactContext = reactContext;
     }
 
+    @NonNull
     @Override
     public String getName() {
         return "${clsssNameWithPrefix}";
@@ -81,13 +84,17 @@ public class ${className}Module extends ReactContextBaseJavaModule {
         callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
     }
 }
-`,
+`
   },
   {
     name: ({ packageIdentifier, className }) =>
-      `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Package.java`,
+      `${platform}/src/main/java/${packageIdentifier
+        .split('.')
+        .join('/')}/${className}Package.java`,
     content: ({ packageIdentifier, className }) =>
       `package ${packageIdentifier};
+
+import androidx.annotation.NonNull;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -97,19 +104,18 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
 
 public class ${className}Package implements ReactPackage {
     @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+    public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(new ${className}Module(reactContext));
     }
 
     @Override
-    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+    public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
 }
-`,
-  },
+`
+  }
 ];

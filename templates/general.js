@@ -29,7 +29,6 @@ module.exports = [
   "homepage": "https://github.com/${githubAccount}/${moduleName}",
   "author": "${authorName} <${authorEmail}>",
   "license": "${license}",
-  "licenseFilename": "LICENSE",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
