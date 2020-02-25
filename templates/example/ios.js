@@ -1,14 +1,14 @@
 module.exports = platform => [
   {
-    name: () => 'ios/Podfile',
+    name: () => "ios/Podfile",
     content: ({
       moduleName,
       className,
       clsssNameWithPrefix
-    }) => `source 'https://github.com/artsy/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+    }) => `source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
 
+platform :ios, '9.0'
+inhibit_all_warnings!
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target '${className}' do
@@ -451,7 +451,8 @@ end`
 }`
   },
   {
-    name: ({ className }) => `ios/${className}/Base.lproj/LaunchScreen.storyboard`,
+    name: ({ className }) =>
+      `ios/${className}/Base.lproj/LaunchScreen.storyboard`,
     content: () => `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>

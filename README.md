@@ -6,23 +6,6 @@
 
 ## Installation
 
-需要社区版的 cli
-
-卸载旧版 react-native-cli
-
-```
-npm uninstall -g react-native-cli
-
-```
-
-安装社区版 cli
-
-```
-npm i -g @react-native-community/cli
-```
-
-安装本库
-
 ```
 $ npm install -g react-native-create-lib
 ```
