@@ -1,12 +1,12 @@
 module.exports = [
   {
-    name: () => 'README.md',
+    name: () => "README.md",
     content: ({ clsssNameWithPrefix }) => {
       return `# ${clsssNameWithPrefix}`;
     }
   },
   {
-    name: () => 'package.json',
+    name: () => "package.json",
     content: ({
       moduleName,
       packageIdentifier,
@@ -49,21 +49,19 @@ module.exports = [
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
-    "@react-native-community/eslint-config": "0.0.5",
+    "@gfez/eslint-config-react-native": "^1.0.0",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.8.14",
     "@types/react-native": "^0.60.21",
     "@types/react-test-renderer": "16.9.0",
     "babel-jest": "^24.9.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.5.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react": "16.9.0",
     "react-native": "^0.61.3",
-    "react-native-navigation-hybrid": "^0.18.0",
+    "react-native-navigation-hybrid": "^0.19.0",
     "react-test-renderer": "16.9.0",
-    "typescript": "3.5.3"
+    "typescript": "^3.7.3"
   },
   "jest": {
     "preset": "react-native",
@@ -80,7 +78,7 @@ module.exports = [
 `
   },
   {
-    name: () => 'src/index.ts',
+    name: () => "src/index.ts",
     content: ({ clsssNameWithPrefix }) =>
       `import { NativeModules } from 'react-native'
 
@@ -90,7 +88,7 @@ export default ${clsssNameWithPrefix}
 `
   },
   {
-    name: () => '.gitignore',
+    name: () => ".gitignore",
     content: () => `# OSX
 #
 .DS_Store
@@ -164,17 +162,17 @@ lib/
 `
   },
   {
-    name: () => '.gitattributes',
+    name: () => ".gitattributes",
     content: ({ platforms }) => {
-      if (platforms.indexOf('ios') >= 0) {
-        return '*.pbxproj -text\n';
+      if (platforms.indexOf("ios") >= 0) {
+        return "*.pbxproj -text\n";
       }
 
-      return '';
+      return "";
     }
   },
   {
-    name: () => '.npmignore',
+    name: () => ".npmignore",
     content: () => `example/
 */build/
 
@@ -242,7 +240,7 @@ buck-out/
 *.jsbundle`
   },
   {
-    name: () => 'LICENSE',
+    name: () => "LICENSE",
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
@@ -269,14 +267,14 @@ SOFTWARE.
     }
   },
   {
-    name: () => '.eslintrc.js',
+    name: () => ".eslintrc.js",
     content: () => `module.exports = {
   root: true,
-  extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
 }`
   },
   {
-    name: () => '.prettierrc.js',
+    name: () => ".prettierrc.js",
     content: () => `module.exports = {
   semi: false,
   trailingComma: 'all',
@@ -286,7 +284,7 @@ SOFTWARE.
 }`
   },
   {
-    name: () => 'babel.config.js',
+    name: () => "babel.config.js",
     content: () => {
       return `module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
@@ -295,7 +293,7 @@ SOFTWARE.
     }
   },
   {
-    name: () => 'metro.config.js',
+    name: () => "metro.config.js",
     content: () => {
       return `/**
  * Metro configuration for React Native
@@ -318,7 +316,7 @@ module.exports = {
     }
   },
   {
-    name: () => 'tsconfig.json',
+    name: () => "tsconfig.json",
     content: () => `{
 "compilerOptions": {
   /* Basic Options */
