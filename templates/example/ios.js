@@ -5,9 +5,7 @@ module.exports = platform => [
       moduleName,
       className,
       clsssNameWithPrefix
-    }) => `source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
-
-platform :ios, '9.0'
+    }) => `platform :ios, '9.0'
 inhibit_all_warnings!
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
