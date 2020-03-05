@@ -1,14 +1,14 @@
 module.exports = platform => [
   {
     name: () => `android/settings.gradle`,
-    content: ({ moduleName, className }) => `rootProject.name = '${className}'
+    content: ({ repoName, className }) => `rootProject.name = '${className}'
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
 applyNativeModulesSettingsGradle(settings, "../..")
 
 include ':app'
 
-include ':${moduleName}'
-project(':${moduleName}').projectDir = new File(rootProject.projectDir, '../../android')`
+include ':${repoName}'
+project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../android')`
   },
   {
     name: () => `android/build.gradle`,
@@ -54,7 +54,7 @@ allprojects {
   },
   {
     name: () => 'android/app/build.gradle',
-    content: ({ moduleName, packageIdentifier }) => `apply plugin: 'com.android.application'
+    content: ({ repoName, packageIdentifier }) => `apply plugin: 'com.android.application'
   
 project.ext.react = [
 		root           : "../../../",
@@ -127,7 +127,7 @@ dependencies {
 	} else {
 		implementation jscFlavor
 	}
-	implementation project(':${moduleName}')
+	implementation project(':${repoName}')
 }
 
 task copyDownloadableDepsToLibs(type: Copy) {
@@ -286,4 +286,4 @@ public class MainApplication extends Application implements ReactApplication {
 	}
 }`
   }
-];
+]

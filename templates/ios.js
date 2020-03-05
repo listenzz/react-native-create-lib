@@ -1,7 +1,14 @@
 module.exports = platform => [
   {
     name: ({ clsssNameWithPrefix }) => `${clsssNameWithPrefix}.podspec`,
-    content: ({ moduleName, className, clsssNameWithPrefix, githubAccount, authorName, authorEmail }) => `require "json"
+    content: ({
+      repoName,
+      className,
+      clsssNameWithPrefix,
+      githubAccount,
+      authorName,
+      authorEmail
+    }) => `require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
@@ -10,27 +17,29 @@ Pod::Spec.new do |s|
   s.version      = package["version"]
   s.summary      = package["description"]
  
-  s.homepage     = "https://github.com/${githubAccount}/${moduleName}"
+  s.homepage     = "https://github.com/${githubAccount}/${repoName}"
   s.license      = "MIT"
   s.authors      = { "${authorName}" => "${authorEmail}" }
   s.platforms    = { :ios => "9.0", :tvos => "10.0" }
-  s.source       = { :git => "https://github.com/${githubAccount}/${moduleName}.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/${githubAccount}/${repoName}.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/${className}/**/*.{h,m,swift}"
   s.dependency "React"
-end`,
+end`
   },
   {
-    name: ({ className, clsssNameWithPrefix }) => `${platform}/${className}/${clsssNameWithPrefix}.h`,
+    name: ({ className, clsssNameWithPrefix }) =>
+      `${platform}/${className}/${clsssNameWithPrefix}.h`,
     content: ({ clsssNameWithPrefix }) => `#import <React/RCTBridgeModule.h>
 
 @interface ${clsssNameWithPrefix} : NSObject <RCTBridgeModule>
 
 @end
-`,
+`
   },
   {
-    name: ({ className, clsssNameWithPrefix }) => `${platform}/${className}/${clsssNameWithPrefix}.m`,
+    name: ({ className, clsssNameWithPrefix }) =>
+      `${platform}/${className}/${clsssNameWithPrefix}.m`,
     content: ({ clsssNameWithPrefix }) => `#import "${clsssNameWithPrefix}.h"
 
 @implementation ${clsssNameWithPrefix}
@@ -44,10 +53,11 @@ RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnu
 }
 
 @end
-`,
+`
   },
   {
-    name: ({ className, clsssNameWithPrefix }) => `${platform}/${clsssNameWithPrefix}.xcodeproj/project.pbxproj`,
+    name: ({ className, clsssNameWithPrefix }) =>
+      `${platform}/${clsssNameWithPrefix}.xcodeproj/project.pbxproj`,
     content: ({ className, clsssNameWithPrefix }) => `// !$*UTF8*$!
 {
   archiveVersion = 1;
@@ -331,6 +341,6 @@ RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnu
   };
   rootObject = 910362CA1FE9318600F4DA8E /* Project object */;
 }    
-`,
-  },
-];
+`
+  }
+]

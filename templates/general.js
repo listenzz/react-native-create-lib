@@ -1,20 +1,13 @@
 module.exports = [
   {
-    name: () => "README.md",
+    name: () => 'README.md',
     content: ({ clsssNameWithPrefix }) => {
-      return `# ${clsssNameWithPrefix}`;
+      return `# ${clsssNameWithPrefix}`
     }
   },
   {
-    name: () => "package.json",
-    content: ({
-      moduleName,
-      packageIdentifier,
-      githubAccount,
-      authorName,
-      authorEmail,
-      license
-    }) => `{
+    name: () => 'package.json',
+    content: ({ repoName, moduleName, packageIdentifier, githubAccount, authorName, authorEmail, license }) => `{
   "name": "${moduleName}",
   "description": "TODO",
   "version": "1.0.0",
@@ -24,9 +17,9 @@ module.exports = [
   "nativePackage": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/${githubAccount}/${moduleName}.git"
+    "url": "https://github.com/${githubAccount}/${repoName}.git"
   },
-  "homepage": "https://github.com/${githubAccount}/${moduleName}",
+  "homepage": "https://github.com/${githubAccount}/${repoName}",
   "author": "${authorName} <${authorEmail}>",
   "license": "${license}",
   "main": "./lib/index.js",
@@ -78,7 +71,7 @@ module.exports = [
 `
   },
   {
-    name: () => "src/index.ts",
+    name: () => 'src/index.ts',
     content: ({ clsssNameWithPrefix }) =>
       `import { NativeModules } from 'react-native'
 
@@ -88,7 +81,7 @@ export default ${clsssNameWithPrefix}
 `
   },
   {
-    name: () => ".gitignore",
+    name: () => '.gitignore',
     content: () => `# OSX
 #
 .DS_Store
@@ -162,17 +155,17 @@ lib/
 `
   },
   {
-    name: () => ".gitattributes",
+    name: () => '.gitattributes',
     content: ({ platforms }) => {
-      if (platforms.indexOf("ios") >= 0) {
-        return "*.pbxproj -text\n";
+      if (platforms.indexOf('ios') >= 0) {
+        return '*.pbxproj -text\n'
       }
 
-      return "";
+      return ''
     }
   },
   {
-    name: () => ".npmignore",
+    name: () => '.npmignore',
     content: () => `example/
 */build/
 
@@ -240,7 +233,7 @@ buck-out/
 *.jsbundle`
   },
   {
-    name: () => "LICENSE",
+    name: () => 'LICENSE',
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
@@ -263,18 +256,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-`;
+`
     }
   },
   {
-    name: () => ".eslintrc.js",
+    name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
   extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
 }`
   },
   {
-    name: () => ".prettierrc.js",
+    name: () => '.prettierrc.js',
     content: () => `module.exports = {
   semi: false,
   trailingComma: 'all',
@@ -284,16 +277,16 @@ SOFTWARE.
 }`
   },
   {
-    name: () => "babel.config.js",
+    name: () => 'babel.config.js',
     content: () => {
       return `module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
 }
-`;
+`
     }
   },
   {
-    name: () => "metro.config.js",
+    name: () => 'metro.config.js',
     content: () => {
       return `/**
  * Metro configuration for React Native
@@ -312,11 +305,11 @@ module.exports = {
     }),
   },
 }
-`;
+`
     }
   },
   {
-    name: () => "tsconfig.json",
+    name: () => 'tsconfig.json',
     content: () => `{
 "compilerOptions": {
   /* Basic Options */
@@ -378,4 +371,4 @@ module.exports = {
 "exclude": ["node_modules", "lib", "babel.config.js", "metro.config.js", "jest.config.js"]
 }`
   }
-];
+]

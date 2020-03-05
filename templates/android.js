@@ -40,7 +40,7 @@ dependencies {
   },
   {
     name: () => `${platform}/proguard-rules.pro`,
-    content: () => ""
+    content: () => ''
   },
   {
     name: () => `${platform}/src/main/AndroidManifest.xml`,
@@ -54,9 +54,7 @@ dependencies {
   },
   {
     name: ({ packageIdentifier, className }) =>
-      `${platform}/src/main/java/${packageIdentifier
-        .split(".")
-        .join("/")}/${className}Module.java`,
+      `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Module.java`,
     content: ({ packageIdentifier, className, clsssNameWithPrefix }) =>
       `package ${packageIdentifier};
 
@@ -93,8 +91,8 @@ public class ${className}Module extends ReactContextBaseJavaModule {
   {
     name: ({ packageIdentifier, className }) =>
       `${platform}/src/main/java/${packageIdentifier
-        .split(".")
-        .join("/")}/${className}Package.java`,
+        .split('.')
+        .join('/')}/${className}Package.java`,
     content: ({ packageIdentifier, className }) =>
       `package ${packageIdentifier};
 
@@ -122,4 +120,4 @@ public class ${className}Package implements ReactPackage {
 }
 `
   }
-];
+]
