@@ -7,7 +7,15 @@ module.exports = [
   },
   {
     name: () => 'package.json',
-    content: ({ repoName, moduleName, packageIdentifier, githubAccount, authorName, authorEmail, license }) => `{
+    content: ({
+      repoName,
+      moduleName,
+      packageIdentifier,
+      githubAccount,
+      authorName,
+      authorEmail,
+      license
+    }) => `{
   "name": "${moduleName}",
   "description": "TODO",
   "version": "1.0.0",
@@ -52,7 +60,7 @@ module.exports = [
     "metro-react-native-babel-preset": "^0.56.0",
     "react": "16.9.0",
     "react-native": "^0.61.3",
-    "react-native-navigation-hybrid": "^0.19.0",
+    "react-native-navigation-hybrid": "^0.20.0",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.7.3"
   },
