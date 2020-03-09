@@ -245,7 +245,7 @@ buck-out/
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
-Copyright (c) 2019 ${authorName} ${authorEmail}
+Copyright (c) 2020 ${authorName} ${authorEmail}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -325,7 +325,7 @@ module.exports = {
   "skipLibCheck": true,
   "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
   // "module": "commonjs"                   /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
-  "lib": ["es6"] /* Specify library files to be included in the compilation. */,
+  "lib": ["ES2018"] /* Specify library files to be included in the compilation. */,
   // "allowJs": true                        /* Allow javascript files to be compiled. */,
   // "checkJs": true,                       /* Report errors in .js files. */
   "jsx": "react-native" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
