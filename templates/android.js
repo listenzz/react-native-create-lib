@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: () => `${platform}/build.gradle`,
     content: () => `// ${platform}/build.gradle
@@ -36,21 +36,21 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.facebook.react:react-native:+'
 }
-`
+`,
   },
   {
     name: () => `${platform}/proguard-rules.pro`,
-    content: () => ''
+    content: () => '',
   },
   {
     name: () => `${platform}/src/main/AndroidManifest.xml`,
     content: ({
-      packageIdentifier
+      packageIdentifier,
     }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="${packageIdentifier}">
 
 </manifest>
-`
+`,
   },
   {
     name: ({ packageIdentifier, className }) =>
@@ -86,7 +86,7 @@ public class ${className}Module extends ReactContextBaseJavaModule {
         callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
     }
 }
-`
+`,
   },
   {
     name: ({ packageIdentifier, className }) =>
@@ -108,16 +108,18 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 public class ${className}Package implements ReactPackage {
+    @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(new ${className}Module(reactContext));
     }
 
+    @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
 }
-`
-  }
+`,
+  },
 ]

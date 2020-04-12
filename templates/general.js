@@ -3,7 +3,7 @@ module.exports = [
     name: () => 'README.md',
     content: ({ clsssNameWithPrefix }) => {
       return `# ${clsssNameWithPrefix}`
-    }
+    },
   },
   {
     name: () => 'package.json',
@@ -14,7 +14,7 @@ module.exports = [
       githubAccount,
       authorName,
       authorEmail,
-      license
+      license,
     }) => `{
   "name": "${moduleName}",
   "description": "TODO",
@@ -60,7 +60,7 @@ module.exports = [
     "metro-react-native-babel-preset": "^0.56.0",
     "react": "16.9.0",
     "react-native": "^0.61.3",
-    "react-native-navigation-hybrid": "^0.20.0",
+    "react-native-navigation-hybrid": "^0.21.0",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.7.3"
   },
@@ -76,7 +76,7 @@ module.exports = [
     ]
   }
 }
-`
+`,
   },
   {
     name: () => 'src/index.ts',
@@ -86,7 +86,7 @@ module.exports = [
 const { ${clsssNameWithPrefix} } = NativeModules
 
 export default ${clsssNameWithPrefix}
-`
+`,
   },
   {
     name: () => '.gitignore',
@@ -160,7 +160,7 @@ Podfile.lock
 # lib
 lib/
 
-`
+`,
   },
   {
     name: () => '.gitattributes',
@@ -170,7 +170,7 @@ lib/
       }
 
       return ''
-    }
+    },
   },
   {
     name: () => '.npmignore',
@@ -238,7 +238,7 @@ buck-out/
 */fastlane/screenshots
 
 # Bundle artifact
-*.jsbundle`
+*.jsbundle`,
   },
   {
     name: () => 'LICENSE',
@@ -265,14 +265,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 `
-    }
+    },
   },
   {
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
   extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
-}`
+}`,
   },
   {
     name: () => '.prettierrc.js',
@@ -282,7 +282,7 @@ SOFTWARE.
   jsxBracketSameLine: true,
   singleQuote: true,
   printWidth: 100,
-}`
+}`,
   },
   {
     name: () => 'babel.config.js',
@@ -291,7 +291,7 @@ SOFTWARE.
   presets: ['module:metro-react-native-babel-preset'],
 }
 `
-    }
+    },
   },
   {
     name: () => 'metro.config.js',
@@ -314,7 +314,7 @@ module.exports = {
   },
 }
 `
-    }
+    },
   },
   {
     name: () => 'tsconfig.json',
@@ -377,6 +377,6 @@ module.exports = {
   // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 },
 "exclude": ["node_modules", "lib", "babel.config.js", "metro.config.js", "jest.config.js"]
-}`
-  }
+}`,
+  },
 ]

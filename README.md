@@ -32,7 +32,7 @@ $ npm install
 选项:
 
   -V, --version                             output the version number
-  --prefix <prefix>                         The prefix for the library module (Default: ``)
+  --prefix <prefix>                         The prefix for the library module (Default: `RN`)
   --module-name <moduleName>                The module library package name to be used in package.json. Default: react-native-(name in param-case)
   --package-identifier <packageIdentifier>  [Android] The Java package identifier used by the Android module (Default: `com.reactnative`)
   --platforms <platforms>                   Platforms the library module will be created for - comma separated (Default: `ios,android`)
