@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: () => 'ios/Podfile',
     content: ({ className, clsssNameWithPrefix }) => `platform :ios, '9.0'
@@ -29,7 +29,7 @@ target '${className}' do
     pod 'React-jsi', :path => '../../node_modules/react-native/ReactCommon/jsi'
     pod 'React-jsiexecutor', :path => '../../node_modules/react-native/ReactCommon/jsiexecutor'
     pod 'React-jsinspector', :path => '../../node_modules/react-native/ReactCommon/jsinspector'
-    pod 'ReactCommon/jscallinvoker', :path => "../../node_modules/react-native/ReactCommon"
+    pod 'ReactCommon/callinvoker', :path => "../../node_modules/react-native/ReactCommon"
     pod 'ReactCommon/turbomodule/core', :path => "../../node_modules/react-native/ReactCommon"
     pod 'Yoga', :path => '../../node_modules/react-native/ReactCommon/yoga'
 
@@ -39,7 +39,7 @@ target '${className}' do
 
     pod 'NavigationHybrid', :path => '../../node_modules/react-native-navigation-hybrid'
     pod '${clsssNameWithPrefix}', :path => '../../'
-end`
+end`,
   },
   {
     name: ({ className }) => `ios/${className}/Info.plist`,
@@ -95,7 +95,7 @@ end`
         <string>UIInterfaceOrientationPortrait</string>
     </array>
 </dict>
-</plist>`
+</plist>`,
   },
   {
     name: ({ className }) => `ios/${className}.xcodeproj/project.pbxproj`,
@@ -442,7 +442,7 @@ end`
 /* End XCConfigurationList section */
     };
     rootObject = 91887257236AD544003DC79E /* Project object */;
-}`
+}`,
   },
   {
     name: ({ className }) => `ios/${className}/Base.lproj/LaunchScreen.storyboard`,
@@ -470,6 +470,6 @@ end`
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-</document>`
-  }
+</document>`,
+  },
 ]

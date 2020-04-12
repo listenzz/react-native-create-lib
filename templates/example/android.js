@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: () => `android/settings.gradle`,
     content: ({ repoName, className }) => `rootProject.name = '${className}'
@@ -8,7 +8,7 @@ applyNativeModulesSettingsGradle(settings, "../..")
 include ':app'
 
 include ':${repoName}'
-project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../android')`
+project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../android')`,
   },
   {
     name: () => `android/build.gradle`,
@@ -50,7 +50,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
 }
-      `
+      `,
   },
   {
     name: () => 'android/app/build.gradle',
@@ -115,11 +115,19 @@ android {
 			minifyEnabled enableProguardInReleaseBuilds
 			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 		}
+    }
+    packagingOptions {
+		pickFirst "lib/armeabi-v7a/libc++_shared.so"
+		pickFirst "lib/arm64-v8a/libc++_shared.so"
+		pickFirst "lib/x86/libc++_shared.so"
+		pickFirst "lib/x86_64/libc++_shared.so"
 	}
 }
 
 dependencies {
-	implementation 'com.facebook.react:react-native:+'
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'com.facebook.react:react-native:+'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 	if (enableHermes) {
 		def hermesPath = "../../../node_modules/hermes-engine/android/"
 		debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -136,20 +144,21 @@ into 'libs'
 }
 
 apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
-applyNativeModulesAppBuildGradle(project, "../..")`
+applyNativeModulesAppBuildGradle(project, "../..")`,
   },
   {
     name: () => `android/app/src/main/res/values/strings.xml`,
     content: ({ className }) => `<resources>
     <string name="app_name">${className}</string>
 </resources>
-`
+`,
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
     content: ({
-      packageIdentifier
+      packageIdentifier,
     }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	package="${packageIdentifier}.example">
 
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -160,6 +169,8 @@ applyNativeModulesAppBuildGradle(project, "../..")`
 		android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:allowBackup="false"
+		tools:targetApi="28"
+		tools:ignore="GoogleAppIndexingWarning"
 		android:theme="@style/AppTheme">
 
 		<meta-data
@@ -176,16 +187,17 @@ applyNativeModulesAppBuildGradle(project, "../..")`
 			android:name=".MainActivity"
 			android:label="@string/app_name"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+			android:launchMode="singleTask"
 			android:windowSoftInputMode="adjustResize">
-		<intent-filter>
-			<action android:name="android.intent.action.MAIN" />
-			<category android:name="android.intent.category.LAUNCHER" />
-		</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
 		</activity>
 		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 	</application>
 
-</manifest>`
+</manifest>`,
   },
   {
     name: ({ packageIdentifier }) =>
@@ -198,7 +210,7 @@ import com.navigationhybrid.ReactAppCompatActivity;
 
 public class MainActivity extends ReactAppCompatActivity {
 
-}`
+}`,
   },
   {
     name: ({ packageIdentifier }) =>
@@ -208,7 +220,6 @@ public class MainActivity extends ReactAppCompatActivity {
     content: ({ packageIdentifier, className }) => `package ${packageIdentifier}.example;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.facebook.common.logging.FLog;
 import com.facebook.react.PackageList;
@@ -216,7 +227,6 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.navigationhybrid.ReactBridgeManager;
 import ${packageIdentifier}.${className}Package;
@@ -253,37 +263,10 @@ public class MainApplication extends Application implements ReactApplication {
 	public void onCreate() {
 		super.onCreate();
 		SoLoader.init(this, /* native exopackage */ false);
-		initializeFlipper(this); // Remove this line if you don't want Flipper enabled
 		ReactBridgeManager bridgeManager = ReactBridgeManager.get();
 		bridgeManager.install(getReactNativeHost());
 		FLog.setMinimumLoggingLevel(FLog.INFO);
 	}
-
-	/**
-	 * Loads Flipper in React Native templates.
-	 *
-	 * @param context
-	 */
-	private static void initializeFlipper(Context context) {
-		if (BuildConfig.DEBUG) {
-			try {
-				/*
-				We use reflection here to pick up the class that initializes Flipper,
-				since Flipper library is not available in release mode
-				*/
-				Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
-				aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-}`
-  }
+}`,
+  },
 ]
