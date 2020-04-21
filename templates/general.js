@@ -121,6 +121,8 @@ build/
 .gradle
 local.properties
 *.iml
+android/.project
+android/.settings/
 
 # Visual Studio Code
 #
@@ -208,6 +210,8 @@ build/
 .gradle
 local.properties
 *.iml
+android/.project
+android/.settings/
 
 # Visual Studio Code
 #
