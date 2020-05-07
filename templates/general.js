@@ -121,8 +121,8 @@ build/
 .gradle
 local.properties
 *.iml
-android/.project
-android/.settings/
+.project
+*/.settings/
 
 # Visual Studio Code
 #
@@ -133,7 +133,6 @@ android/.settings/
 node_modules/
 npm-debug.log
 yarn-error.log
-yarn.lock
 
 # BUCK
 buck-out/
@@ -210,8 +209,8 @@ build/
 .gradle
 local.properties
 *.iml
-android/.project
-android/.settings/
+.project
+*/.settings/
 
 # Visual Studio Code
 #
@@ -223,6 +222,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 yarn.lock
+package-json.lock
 
 # BUCK
 buck-out/
