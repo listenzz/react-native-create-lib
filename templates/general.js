@@ -60,7 +60,7 @@ module.exports = [
     "metro-react-native-babel-preset": "^0.59.0",
     "react": "16.11.0",
     "react-native": "^0.62.2",
-    "react-native-navigation-hybrid": "^0.22.0",
+    "react-native-navigation-hybrid": "^0.23.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.7.3"
   },
