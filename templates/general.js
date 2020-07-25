@@ -37,7 +37,7 @@ module.exports = [
     "prestart": "npm run build",
     "prepare": "npm run build",
     "tsc": "tsc",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "run:ios": "react-native run-ios --project-path ./example/ios",
     "start:android": "adb shell am start -n ${packageIdentifier}.example/.MainActivity",
     "run:android": "cd example/android && ./gradlew installDebug && npm run start:android",
@@ -48,8 +48,8 @@ module.exports = [
     "react-native": ">=0.60.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/runtime": "^7.4.3",
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
     "@gfez/eslint-config-react-native": "^1.0.0",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.8.14",
@@ -113,6 +113,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+IDEWorkspaceChecks.plist
 
 # Android/IntelliJ
 #
@@ -123,10 +124,6 @@ local.properties
 *.iml
 .project
 .settings/
-
-# Visual Studio Code
-#
-.vscode/
 
 # node.js
 #

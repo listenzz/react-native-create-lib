@@ -1,7 +1,7 @@
 module.exports = (platform) => [
   {
     name: () => 'ios/Podfile',
-    content: ({ className, clsssNameWithPrefix }) => `platform :ios, '9.0'
+    content: ({ className, clsssNameWithPrefix }) => `platform :ios, '10.0'
 inhibit_all_warnings!
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
