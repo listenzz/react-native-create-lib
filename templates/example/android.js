@@ -17,7 +17,7 @@ project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../and
 buildscript {
     ext {
         buildToolsVersion = "29.0.2"
-        minSdkVersion = 16
+        minSdkVersion = 21
         compileSdkVersion = 29
         targetSdkVersion = 29
     }
