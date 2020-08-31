@@ -1,8 +1,11 @@
 module.exports = [
   {
-    name: () => `App.js`,
-    content: ({ className }) => `import React, { Component } from 'react'
+    name: () => `App.tsx`,
+    content: ({ className, moduleName }) => `import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
+import { lib } from '${moduleName}'
+
+interface Props {}
 
 export default class App extends Component {
   static navigationItem = {
@@ -11,13 +14,14 @@ export default class App extends Component {
     },
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props)
     this.handlePress = this.handlePress.bind(this)
   }
 
   handlePress() {
     console.log('You have pressed me.')
+    console.log(lib(8, 9))
   }
 
   render() {
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
 })
-`
+`,
   },
   {
     name: () => 'index.js',
@@ -90,6 +94,6 @@ Navigator.setRoot({
     ],
   },
 })
-`
-  }
+`,
+  },
 ]
