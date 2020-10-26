@@ -1,4 +1,4 @@
-module.exports = platform => [
+module.exports = (platform) => [
   {
     name: ({ clsssNameWithPrefix }) => `${clsssNameWithPrefix}.podspec`,
     content: ({
@@ -7,7 +7,7 @@ module.exports = platform => [
       clsssNameWithPrefix,
       githubAccount,
       authorName,
-      authorEmail
+      authorEmail,
     }) => `require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
@@ -20,12 +20,12 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/${githubAccount}/${repoName}"
   s.license      = "MIT"
   s.authors      = { "${authorName}" => "${authorEmail}" }
-  s.platforms    = { :ios => "9.0", :tvos => "10.0" }
+  s.platforms    = { :ios => "10.0", :tvos => "10.0" }
   s.source       = { :git => "https://github.com/${githubAccount}/${repoName}.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/${className}/**/*.{h,m,swift}"
   s.dependency "React"
-end`
+end`,
   },
   {
     name: ({ className, clsssNameWithPrefix }) =>
@@ -35,7 +35,7 @@ end`
 @interface ${clsssNameWithPrefix} : NSObject <RCTBridgeModule>
 
 @end
-`
+`,
   },
   {
     name: ({ className, clsssNameWithPrefix }) =>
@@ -53,7 +53,7 @@ RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnu
 }
 
 @end
-`
+`,
   },
   {
     name: ({ className, clsssNameWithPrefix }) =>
@@ -341,6 +341,6 @@ RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnu
   };
   rootObject = 910362CA1FE9318600F4DA8E /* Project object */;
 }    
-`
-  }
+`,
+  },
 ]

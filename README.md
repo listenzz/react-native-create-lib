@@ -18,6 +18,10 @@ Navigate into an empty directory to execute the command.
 $ react-native-create-lib MyLib
 ```
 
+```
+$ react-native-create-lib --module-name @sdcx/wechat --repo-name react-native-wechat wechat
+```
+
 This will create the folder `MyLib` in which the library will be created in.
 
 Now install dependencies by running this command in the newly created library.

@@ -59,8 +59,8 @@ module.exports = [
     "babel-plugin-module-resolver": "^4.0.0",
     "jest": "^26.0.1",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react": "16.11.0",
-    "react-native": "^0.62.2",
+    "react": "16.13.1",
+    "react-native": "^0.63.3",
     "react-native-navigation-hybrid": "^0.27.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.7.3"
@@ -404,6 +404,20 @@ module.exports = {
     content: () => `{
   "extends": "./tsconfig.json",
   "exclude": ["./example/**/*"]
+}
+`,
+  },
+  {
+    name: () => 'react-native.config.js',
+    content: ({ clsssNameWithPrefix }) => `module.exports = {
+  project: {
+    ios: {
+      project: './example/ios/${clsssNameWithPrefix}.xcworkspace',
+    },
+    android: {
+      sourceDir: './example/android/',
+    },
+  },
 }
 `,
   },
