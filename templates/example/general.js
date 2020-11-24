@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
   },
   {
     name: () => 'index.js',
-    content: ({ className }) => `import {
+    content: ({ className }) => `import { Platform } from 'react-native'
+import {
   ReactRegistry,
   Navigator,
   Garden,
@@ -77,6 +78,7 @@ import App from './App'
 Garden.setStyle({
   screenBackgroundColor: '#F8F8F8',
   topBarStyle: BarStyleDarkContent,
+  statusBarColorAndroid: Platform.Version > 21 ? undefined : '#4A4A4A',
 })
 
 ReactRegistry.startRegisterComponent()

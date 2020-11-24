@@ -55,14 +55,13 @@ allprojects {
   {
     name: () => 'android/app/build.gradle',
     content: ({ repoName, packageIdentifier }) => `apply plugin: 'com.android.application'
-  
 project.ext.react = [
-		root           : "../../../",
-		entryFile      : "example/index.js",
-		bundleInRelease: true,
-		bundleInDebug  : true,
-		enableHermes   : false,
-		hermesCommand  : "../../../node_modules/hermes-engine/%OS-BIN%/hermes",
+        root           : "../../../",
+        entryFile      : "example/index.js",
+        bundleInRelease: true,
+        bundleInDebug  : true,
+        enableHermes   : false,
+        hermesCommand  : "../../../node_modules/hermes-engine/%OS-BIN%/hermesc",
 ]
 
 apply from: "../../../node_modules/react-native/react.gradle"
@@ -74,73 +73,74 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
 
-	compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_8
-		targetCompatibility JavaVersion.VERSION_1_8
-	}
-
-	defaultConfig {
-		applicationId "${packageIdentifier}.example"
-		minSdkVersion rootProject.ext.minSdkVersion
-		targetSdkVersion rootProject.ext.targetSdkVersion
-		versionCode 1
-		versionName "1.0"
-	}
-	splits {
-		abi {
-			reset()
-			enable enableSeparateBuildPerCPUArchitecture
-			universalApk false  // If true, also generate a universal APK
-			include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-		}
-	}
-	signingConfigs {
-		debug {
-			storeFile file('debug.keystore')
-			storePassword 'android'
-			keyAlias 'androiddebugkey'
-			keyPassword 'android'
-		}
-	}
-	buildTypes {
-		debug {
-			signingConfig signingConfigs.debug
-		}
-		release {
-			// Caution! In production, you need to generate your own keystore file.
-			// see https://facebook.github.io/react-native/docs/signed-apk-android.
-			signingConfig signingConfigs.debug
-			minifyEnabled enableProguardInReleaseBuilds
-			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-		}
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    defaultConfig {
+        applicationId "${packageIdentifier}"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    splits {
+        abi {
+            reset()
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://facebook.github.io/react-native/docs/signed-apk-android.
+            signingConfig signingConfigs.debug
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
     packagingOptions {
-		pickFirst "lib/armeabi-v7a/libc++_shared.so"
-		pickFirst "lib/arm64-v8a/libc++_shared.so"
-		pickFirst "lib/x86/libc++_shared.so"
-		pickFirst "lib/x86_64/libc++_shared.so"
-	}
+        pickFirst "lib/armeabi-v7a/libc++_shared.so"
+        pickFirst "lib/arm64-v8a/libc++_shared.so"
+        pickFirst "lib/x86/libc++_shared.so"
+        pickFirst "lib/x86_64/libc++_shared.so"
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.facebook.react:react-native:+'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-	if (enableHermes) {
-		def hermesPath = "../../../node_modules/hermes-engine/android/"
-		debugImplementation files(hermesPath + "hermes-debug.aar")
-		releaseImplementation files(hermesPath + "hermes-release.aar")
-	} else {
-		implementation jscFlavor
-	}
-	implementation project(':${repoName}')
+    if (enableHermes) {
+        def hermesPath = "../../../node_modules/hermes-engine/android/"
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+    } else {
+        implementation jscFlavor
+    }
+    implementation project(':${repoName}')
 }
 
 task copyDownloadableDepsToLibs(type: Copy) {
-from configurations.compile
-into 'libs'
+    from configurations.compile
+    into 'libs'
 }
 
 apply from: file("../../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");

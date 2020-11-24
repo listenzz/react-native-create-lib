@@ -395,7 +395,7 @@ module.exports = {
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
-  "include": ["./index.ts", "./src/**/*", "./example/**/*"]
+  "include": ["./src/**/*", "./example/**/*"]
 }
 `,
   },
