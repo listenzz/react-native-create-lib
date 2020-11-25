@@ -5,37 +5,27 @@ module.exports = [
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import { lib } from '${moduleName}'
 
-interface Props {}
-
-export default class App extends Component {
-  static navigationItem = {
-    titleItem: {
-      title: '${className} 演示',
-    },
-  }
-
-  constructor(props: Props) {
-    super(props)
-    this.handlePress = this.handlePress.bind(this)
-  }
-
-  handlePress() {
+function App() {
+  function handlePress() {
     console.log('You have pressed me.')
     console.log(lib(8, 9))
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Hello World!</Text>
-
-        <TouchableOpacity onPress={this.handlePress} activeOpacity={0.2} style={styles.button}>
-          <Text style={styles.buttonText}>press me</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>Hello World!</Text>
+      <TouchableOpacity onPress={handlePress} activeOpacity={0.2} style={styles.button}>
+        <Text style={styles.buttonText}>press me</Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
+
+export default withNavigationItem({
+  titleItem: {
+    title: '${className} 演示',
+  },
+})(App)
 
 const styles = StyleSheet.create({
   container: {
