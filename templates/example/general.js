@@ -1,7 +1,8 @@
 module.exports = [
   {
     name: () => `App.tsx`,
-    content: ({ className, moduleName }) => `import React, { Component } from 'react'
+    content: ({ className, moduleName }) => `import React from 'react'
+import { withNavigationItem } from 'react-native-navigation-hybrid'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import { lib } from '${moduleName}'
 
