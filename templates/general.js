@@ -61,7 +61,7 @@ module.exports = [
     "metro-react-native-babel-preset": "^0.59.0",
     "react": "16.13.1",
     "react-native": "^0.63.3",
-    "react-native-navigation-hybrid": "^0.28.0",
+    "hybrid-navigation": "^1.2.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.7.3"
   },
@@ -250,7 +250,7 @@ buck-out/
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
-Copyright (c) 2020 ${authorName} ${authorEmail}
+Copyright (c) 2021 ${authorName} ${authorEmail}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

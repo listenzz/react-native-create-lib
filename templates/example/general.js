@@ -2,7 +2,7 @@ module.exports = [
   {
     name: () => `App.tsx`,
     content: ({ className, moduleName }) => `import React from 'react'
-import { withNavigationItem } from 'react-native-navigation-hybrid'
+import { withNavigationItem } from 'hybrid-navigation'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import { lib } from '${moduleName}'
 
@@ -63,7 +63,7 @@ import {
   Navigator,
   Garden,
   BarStyleDarkContent,
-} from 'react-native-navigation-hybrid'
+} from 'hybrid-navigation'
 import App from './App'
 
 Garden.setStyle({
