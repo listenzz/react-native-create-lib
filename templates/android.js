@@ -1,4 +1,4 @@
-module.exports = (platform) => [
+module.exports = platform => [
   {
     name: () => `${platform}/build.gradle`,
     content: () => `// ${platform}/build.gradle
@@ -16,7 +16,7 @@ android {
     }
 
     compileSdkVersion safeExtGet('compileSdkVersion', 29)
-    buildToolsVersion safeExtGet('buildToolsVersion', '29.0.2')
+    buildToolsVersion safeExtGet('buildToolsVersion', '29.0.3')
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 21)
@@ -44,9 +44,7 @@ dependencies {
   },
   {
     name: () => `${platform}/src/main/AndroidManifest.xml`,
-    content: ({
-      packageIdentifier,
-    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="${packageIdentifier}">
 
 </manifest>
@@ -55,7 +53,7 @@ dependencies {
   {
     name: ({ packageIdentifier, className }) =>
       `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Module.java`,
-    content: ({ packageIdentifier, className, clsssNameWithPrefix }) =>
+    content: ({ packageIdentifier, className, classNameWithPrefix }) =>
       `package ${packageIdentifier};
 
 import androidx.annotation.NonNull;
@@ -77,7 +75,7 @@ public class ${className}Module extends ReactContextBaseJavaModule {
     @NonNull
     @Override
     public String getName() {
-        return "${clsssNameWithPrefix}";
+        return "${classNameWithPrefix}";
     }
 
     @ReactMethod
@@ -90,15 +88,12 @@ public class ${className}Module extends ReactContextBaseJavaModule {
   },
   {
     name: ({ packageIdentifier, className }) =>
-      `${platform}/src/main/java/${packageIdentifier
-        .split('.')
-        .join('/')}/${className}Package.java`,
+      `${platform}/src/main/java/${packageIdentifier.split('.').join('/')}/${className}Package.java`,
     content: ({ packageIdentifier, className }) =>
       `package ${packageIdentifier};
 
 import androidx.annotation.NonNull;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -111,7 +106,7 @@ public class ${className}Package implements ReactPackage {
     @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new ${className}Module(reactContext));
+        return Collections.singletonList(new ${className}Module(reactContext));
     }
 
     @NonNull

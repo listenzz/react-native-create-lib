@@ -1,21 +1,13 @@
 module.exports = [
   {
     name: () => 'README.md',
-    content: ({ clsssNameWithPrefix }) => {
-      return `# ${clsssNameWithPrefix}`
+    content: ({ classNameWithPrefix }) => {
+      return `# ${classNameWithPrefix}`
     },
   },
   {
     name: () => 'package.json',
-    content: ({
-      repoName,
-      moduleName,
-      packageIdentifier,
-      githubAccount,
-      authorName,
-      authorEmail,
-      license,
-    }) => `{
+    content: ({ repoName, moduleName, packageIdentifier, githubAccount, authorName, authorEmail, license }) => `{
   "name": "${moduleName}",
   "description": "TODO",
   "version": "1.0.0",
@@ -44,25 +36,25 @@ module.exports = [
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.60.4"
+    "react": ">=16.8",
+    "react-native": ">=0.60"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.13.10",
+    "@babel/runtime": "^7.13.10",
     "@gfez/eslint-config-react-native": "^1.0.0",
-    "@types/jest": "^25.2.1",
-    "@types/react": "^16.8.14",
-    "@types/react-native": "^0.62.7",
-    "@types/react-test-renderer": "16.9.0",
-    "babel-jest": "^26.0.1",
+    "@types/jest": "^26.0.21",
+    "@types/react": "^17.0.1",
+    "@types/react-native": "^0.64.0",
+    "@types/react-test-renderer": "17.0.1",
+    "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "^4.0.0",
-    "jest": "^26.0.1",
-    "metro-react-native-babel-preset": "^0.59.0",
-    "react": "16.13.1",
-    "react-native": "^0.63.3",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.64.0",
+    "react": "17.0.1",
+    "react-native": "^0.64.0",
     "hybrid-navigation": "^1.2.0",
-    "react-test-renderer": "16.11.0",
+    "react-test-renderer": "17.0.1",
     "typescript": "^3.7.3"
   },
   "jest": {
@@ -81,12 +73,12 @@ module.exports = [
   },
   {
     name: () => 'src/index.ts',
-    content: ({ clsssNameWithPrefix }) =>
+    content: ({ classNameWithPrefix }) =>
       `import { NativeModules } from 'react-native'
 
-const { ${clsssNameWithPrefix} } = NativeModules
+const { ${classNameWithPrefix} } = NativeModules
 
-export default ${clsssNameWithPrefix}
+export default ${classNameWithPrefix}
 
 export function lib(a: number, b: number) {
   return a + b + 2
@@ -277,7 +269,8 @@ SOFTWARE.
     content: () => `module.exports = {
   root: true,
   extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
-}`,
+}
+`,
   },
   {
     name: () => '.prettierrc.js',
@@ -286,7 +279,9 @@ SOFTWARE.
   trailingComma: 'all',
   jsxBracketSameLine: true,
   singleQuote: true,
-  printWidth: 100,
+  printWidth: 120,
+  tabWidth: 2,
+  arrowParens: 'avoid'
 }`,
   },
   {
@@ -409,10 +404,10 @@ module.exports = {
   },
   {
     name: () => 'react-native.config.js',
-    content: ({ clsssNameWithPrefix }) => `module.exports = {
+    content: ({ classNameWithPrefix }) => `module.exports = {
   project: {
     ios: {
-      project: './example/ios/${clsssNameWithPrefix}.xcworkspace',
+      project: './example/ios/${classNameWithPrefix}.xcworkspace',
     },
     android: {
       sourceDir: './example/android/',

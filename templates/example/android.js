@@ -1,7 +1,7 @@
-module.exports = (platform) => [
+module.exports = platform => [
   {
     name: () => `android/settings.gradle`,
-    content: ({ repoName, className }) => `rootProject.name = '${className}'
+    content: ({ repoName, exampleName }) => `rootProject.name = '${exampleName}'
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
 applyNativeModulesSettingsGradle(settings, "../..")
 
@@ -9,48 +9,6 @@ include ':app'
 
 include ':${repoName}'
 project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../android')`,
-  },
-  {
-    name: () => `android/build.gradle`,
-    content: () => `// Top-level build file where you can add configuration options common to all sub-projects/modules.
-  
-buildscript {
-    ext {
-        buildToolsVersion = "29.0.2"
-        minSdkVersion = 21
-        compileSdkVersion = 29
-        targetSdkVersion = 29
-    }
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:3.5.3")
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        mavenLocal()
-        maven {
-            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-            url("$rootDir/../../node_modules/react-native/android")
-        }
-        maven {
-            // Android JSC is installed from npm
-            url("$rootDir/../../node_modules/jsc-android/dist")
-        }
-
-        google()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
-}
-      `,
   },
   {
     name: () => 'android/app/build.gradle',
@@ -72,7 +30,7 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
-
+    ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
@@ -81,7 +39,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "${packageIdentifier}"
+        applicationId "${packageIdentifier}.example"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -92,7 +50,7 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+            include "arm64-v8a", "x86_64"
         }
     }
     signingConfigs {
@@ -114,13 +72,6 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
-    }
-
-    packagingOptions {
-        pickFirst "lib/armeabi-v7a/libc++_shared.so"
-        pickFirst "lib/arm64-v8a/libc++_shared.so"
-        pickFirst "lib/x86/libc++_shared.so"
-        pickFirst "lib/x86_64/libc++_shared.so"
     }
 }
 
@@ -148,16 +99,14 @@ applyNativeModulesAppBuildGradle(project, "../..")`,
   },
   {
     name: () => `android/app/src/main/res/values/strings.xml`,
-    content: ({ className }) => `<resources>
-    <string name="app_name">${className}</string>
+    content: ({ exampleName }) => `<resources>
+    <string name="app_name">${exampleName}</string>
 </resources>
 `,
   },
   {
     name: () => `android/app/src/main/AndroidManifest.xml`,
-    content: ({
-      packageIdentifier,
-    }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    content: ({ packageIdentifier }) => `<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	package="${packageIdentifier}.example">
 
@@ -194,16 +143,13 @@ applyNativeModulesAppBuildGradle(project, "../..")`,
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 	</application>
 
 </manifest>`,
   },
   {
     name: ({ packageIdentifier }) =>
-      `android/app/src/main/java/${packageIdentifier
-        .split('.')
-        .join('/')}/example/MainActivity.java`,
+      `android/app/src/main/java/${packageIdentifier.split('.').join('/')}/example/MainActivity.java`,
     content: ({ packageIdentifier }) => `package ${packageIdentifier}.example;
   
 import com.reactnative.hybridnavigation.ReactAppCompatActivity;
@@ -214,9 +160,7 @@ public class MainActivity extends ReactAppCompatActivity {
   },
   {
     name: ({ packageIdentifier }) =>
-      `android/app/src/main/java/${packageIdentifier
-        .split('.')
-        .join('/')}/example/MainApplication.java`,
+      `android/app/src/main/java/${packageIdentifier.split('.').join('/')}/example/MainApplication.java`,
     content: ({ packageIdentifier, className }) => `package ${packageIdentifier}.example;
 
 import android.app.Application;
