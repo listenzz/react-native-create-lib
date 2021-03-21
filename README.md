@@ -4,18 +4,12 @@
 
 本库 fork 自 [create-react-native-module](https://github.com/brodybits/create-react-native-module)
 
-## Installation
-
-```
-$ npm install -g react-native-create-lib
-```
-
 ## Command-line usage
 
 Navigate into an empty directory to execute the command.
 
 ```
-$ react-native-create-lib MyLib
+$npx react-native-create-lib MyLib
 ```
 
 ```
