@@ -273,6 +273,15 @@ SOFTWARE.
 `,
   },
   {
+    name: () => '.eslintignore',
+    content: () => `ios/
+android/
+builds/
+*/build/
+lib/
+`,
+  },
+  {
     name: () => '.prettierrc.js',
     content: () => `module.exports = {
   semi: false,
