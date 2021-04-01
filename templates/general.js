@@ -170,6 +170,11 @@ lib/
     name: () => '.npmignore',
     content: () => `example/
 */build/
+src/
+react-native.config.js
+tsconfig.json
+.eslintrc.js
+.prettierrc.js
 
 # OSX
 #
