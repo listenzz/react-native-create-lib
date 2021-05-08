@@ -173,6 +173,7 @@ lib/
 src/
 react-native.config.js
 tsconfig.json
+tsconfig.build.json
 .eslintrc.js
 .prettierrc.js
 
@@ -361,7 +362,7 @@ module.exports = {
     "outDir": "./lib" /* Redirect output structure to the directory. */,
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "removeComments": true,                /* Do not emit comments to output. */
-    // "noEmit": true                         /* Do not emit outputs. */,
+    "noEmit": true                         /* Do not emit outputs. */,
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true                /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
@@ -412,6 +413,9 @@ module.exports = {
     name: () => 'tsconfig.build.json',
     content: () => `{
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false
+  },
   "exclude": ["./example/**/*"]
 }
 `,
