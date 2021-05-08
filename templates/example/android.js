@@ -50,7 +50,7 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "arm64-v8a", "x86_64"
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
     signingConfigs {
