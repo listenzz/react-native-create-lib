@@ -16,6 +16,7 @@ project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../and
 project.ext.react = [
         root           : "../../../",
         entryFile      : "example/index.js",
+        cliPath        : "node_modules/react-native/local-cli/cli.js",
         bundleInRelease: true,
         bundleInDebug  : true,
         enableHermes   : false,
@@ -30,7 +31,6 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {

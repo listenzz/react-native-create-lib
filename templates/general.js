@@ -49,13 +49,13 @@ module.exports = [
     "@types/react-test-renderer": "17.0.1",
     "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "^4.0.0",
+    "hybrid-navigation": "^2.7.1",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
     "react": "17.0.1",
-    "react-native": "^0.64.0",
-    "hybrid-navigation": "^1.2.0",
+    "react-native": "0.64.2",
     "react-test-renderer": "17.0.1",
-    "typescript": "^3.7.3"
+    "typescript": "4.3.5"
   },
   "jest": {
     "preset": "react-native",

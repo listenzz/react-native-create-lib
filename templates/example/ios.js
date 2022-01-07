@@ -2,7 +2,6 @@ module.exports = platform => [
   {
     name: () => 'ios/Podfile',
     content: ({ exampleName, classNameWithPrefix }) => `platform :ios, '10.0'
-inhibit_all_warnings!
 require_relative '../../node_modules/react-native/scripts/react_native_pods'
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -14,6 +13,17 @@ target '${exampleName}' do
         :path => config[:reactNativePath],
         :hermes_enabled => false
     )
+                        
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "amd64"
+                if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
+                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+                end
+            end
+        end
+    end
 end`,
   },
   {
@@ -79,7 +89,7 @@ end`,
     archiveVersion = 1;
     classes = {
     };
-    objectVersion = 54;
+    objectVersion = 55;
     objects = {
 
 /* Begin PBXBuildFile section */
@@ -203,7 +213,7 @@ end`,
         83CBB9F71A601CBA00E9B192 /* Project object */ = {
             isa = PBXProject;
             attributes = {
-                LastUpgradeCheck = 1210;
+                LastUpgradeCheck = 1320;
                 TargetAttributes = {
                     13B07F861A680F5B00A75B9A = {
                         LastSwiftMigration = 1120;
@@ -211,7 +221,7 @@ end`,
                 };
             };
             buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "${exampleName}" */;
-            compatibilityVersion = "Xcode 12.0";
+            compatibilityVersion = "Xcode 13.0";
             developmentRegion = en;
             hasScannedForEncodings = 0;
             knownRegions = (
