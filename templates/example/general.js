@@ -58,12 +58,7 @@ const styles = StyleSheet.create({
   {
     name: () => 'index.js',
     content: ({ className }) => `import { Platform } from 'react-native'
-import {
-  ReactRegistry,
-  Navigator,
-  Garden,
-  BarStyleDarkContent,
-} from 'hybrid-navigation'
+import { ReactRegistry, Navigator, Garden, BarStyleDarkContent } from 'hybrid-navigation'
 import App from './App'
 
 Garden.setStyle({

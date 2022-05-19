@@ -10,14 +10,14 @@ Pod::Spec.new do |s|
   s.version      = package["version"]
   s.summary      = package["description"]
  
-  s.homepage     = "https://github.com/${githubAccount}/${repoName}"
-  s.license      = "MIT"
-  s.authors      = { "${authorName}" => "${authorEmail}" }
-  s.platforms    = { :ios => "10.0", :tvos => "10.0" }
+  s.homepage     = package["homepage"]
+  s.license      = package["license"]
+  s.authors      = package["author"]
+  s.platforms    = { :ios => "10.0" }
   s.source       = { :git => "https://github.com/${githubAccount}/${repoName}.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/${className}/**/*.{h,m,swift}"
-  s.dependency "React"
+  s.source_files = "ios/${className}/**/*.{h,m,mm}"
+  s.dependency "React-Core"
 end`,
   },
   {
@@ -47,7 +47,7 @@ RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnu
 `,
   },
   {
-    name: ({ className, clsssNameWithPrefix }) => `${platform}/${clsssNameWithPrefix}.xcodeproj/project.pbxproj`,
+    name: ({ className }) => `${platform}/${className}.xcodeproj/project.pbxproj`,
     content: ({ className, clsssNameWithPrefix }) => `// !$*UTF8*$!
 {
   archiveVersion = 1;

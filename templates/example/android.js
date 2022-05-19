@@ -16,7 +16,7 @@ project(':${repoName}').projectDir = new File(rootProject.projectDir, '../../and
 project.ext.react = [
         root           : "../../../",
         entryFile      : "example/index.js",
-        cliPath        : "node_modules/react-native/local-cli/cli.js",
+        cliPath        : "../../../node_modules/react-native/cli.js",
         bundleInRelease: true,
         bundleInDebug  : true,
         enableHermes   : false,
@@ -90,7 +90,7 @@ dependencies {
 }
 
 task copyDownloadableDepsToLibs(type: Copy) {
-    from configurations.compile
+    from configurations.implementation
     into 'libs'
 }
 

@@ -1,7 +1,7 @@
 module.exports = platform => [
   {
     name: () => 'ios/Podfile',
-    content: ({ exampleName, classNameWithPrefix }) => `platform :ios, '10.0'
+    content: ({ exampleName, classNameWithPrefix }) => `platform :ios, '11.0'
 require_relative '../../node_modules/react-native/scripts/react_native_pods'
 require_relative '../../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -13,18 +13,13 @@ target '${exampleName}' do
         :path => config[:reactNativePath],
         :hermes_enabled => false
     )
-                        
-    post_install do |installer|
-        installer.pods_project.targets.each do |target|
-            target.build_configurations.each do |config|
-                config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "amd64"
-                if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
-                    config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-                end
-            end
-        end
-    end
-end`,
+end
+
+post_install do |installer|
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+end
+`,
   },
   {
     name: ({ exampleName }) => `ios/${exampleName}/Info.plist`,
