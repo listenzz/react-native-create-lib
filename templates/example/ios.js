@@ -258,7 +258,7 @@ end
             );
             runOnlyForDeploymentPostprocessing = 0;
             shellPath = /bin/sh;
-            shellScript = "set -e\n\nexport NODE_BINARY=node\n../../node_modules/react-native/scripts/react-native-xcode.sh\n";
+            shellScript = "set -e\n\nexport NODE_BINARY=node\n../../node_modules/react-native/scripts/react-native-xcode.sh example/index.js\n";
         };
 /* End PBXShellScriptBuildPhase section */
 
@@ -385,7 +385,7 @@ end
                 GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
                 GCC_WARN_UNUSED_FUNCTION = YES;
                 GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+                IPHONEOS_DEPLOYMENT_TARGET = 11.0;
                 LD_RUNPATH_SEARCH_PATHS = (
                     /usr/lib/swift,
                     "$(inherited)",
@@ -443,7 +443,7 @@ end
                 GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
                 GCC_WARN_UNUSED_FUNCTION = YES;
                 GCC_WARN_UNUSED_VARIABLE = YES;
-                IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+                IPHONEOS_DEPLOYMENT_TARGET = 11.0;
                 LD_RUNPATH_SEARCH_PATHS = (
                     /usr/lib/swift,
                     "$(inherited)",

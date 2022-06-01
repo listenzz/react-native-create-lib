@@ -36,7 +36,7 @@ module.exports = [
   ],
   "repository": "https://github.com/${githubAccount}/${repoName}",
   "homepage": "https://github.com/${githubAccount}/${repoName}#readme",
-  "author": "${authorName} <${authorEmail}> (${githubAccount})",
+  "author": "${authorName} <${authorEmail}> (https://github.com/${githubAccount})",
   "license": "${license}",
   "keywords": [
     "react-native"
