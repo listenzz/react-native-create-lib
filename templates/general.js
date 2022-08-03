@@ -7,16 +7,7 @@ module.exports = [
   },
   {
     name: () => 'package.json',
-    content: ({
-      classNameWithPrefix,
-      repoName,
-      moduleName,
-      packageIdentifier,
-      githubAccount,
-      authorName,
-      authorEmail,
-      license,
-    }) => `{
+    content: ({ classNameWithPrefix, repoName, moduleName, githubAccount, authorName, authorEmail, license }) => `{
   "name": "${moduleName}",
   "description": "TODO",
   "version": "1.0.0",
@@ -46,9 +37,8 @@ module.exports = [
     "prepare": "npm run build",
     "tsc": "tsc",
     "start": "react-native start --reset-cache",
-    "run:ios": "react-native run-ios --project-path ./example/ios",
-    "start:android": "adb shell am start -n ${packageIdentifier}.example/.MainActivity",
-    "run:android": "cd example/android && ./gradlew installDebug && npm run start:android",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
