@@ -1,6 +1,6 @@
 {
   "name": "react-native-create-lib",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Tool to create a React Native library module or view module with a single command",
   "bin": "bin/cli.js",
   "main": "lib/lib.js",

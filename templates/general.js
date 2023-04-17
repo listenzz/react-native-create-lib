@@ -49,7 +49,7 @@ module.exports = [
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/runtime": "^7.13.10",
-    "@gfez/eslint-config-react-native": "^1.0.0",
+    "@react-native-community/eslint-config": "^3.0.0",
     "@types/jest": "^26.0.21",
     "@types/react": "^17.0.2",
     "@types/react-native": "^0.67.0",
@@ -59,8 +59,9 @@ module.exports = [
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.66.2",
     "react": "17.0.2",
-    "react-native": "0.67.4",
+    "react-native": "^0.67.4",
     "react-test-renderer": "17.0.2",
+    "eslint": "^7.32.0",
     "typescript": "^4.6.4"
   },
   "jest": {
@@ -203,7 +204,23 @@ SOFTWARE.
     name: () => '.eslintrc.js',
     content: () => `module.exports = {
   root: true,
-  extends: ['@gfez/react-native', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['@react-native-community', 'plugin:prettier/recommended', 'prettier/react'],
+  overrides: [
+    {
+      files: ['jest/*'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
+  rules: {
+    'no-shadow': 0,
+    'no-bitwise': 0,
+    'react-native/no-inline-styles': 0,
+  },
+  globals: {
+    JSX: 'readonly',
+  },
 }
 `,
   },
