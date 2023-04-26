@@ -50,13 +50,13 @@ module.exports = [
     "@babel/core": "^7.13.10",
     "@babel/runtime": "^7.13.10",
     "@react-native-community/eslint-config": "^3.0.0",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^27.0.1",
     "@types/react": "^17.0.2",
     "@types/react-native": "^0.67.0",
     "@types/react-test-renderer": "17.0.2",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.0.6",
     "hybrid-navigation": "^2.9.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.6",
     "metro-react-native-babel-preset": "^0.66.2",
     "react": "17.0.2",
     "react-native": "^0.67.4",
@@ -178,7 +178,7 @@ lib/
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
-Copyright (c) 2022 ${authorName} ${authorEmail}
+Copyright (c) 2023 ${authorName} ${authorEmail}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
