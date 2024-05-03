@@ -5,7 +5,7 @@ const general = require('./general')
 const updatePlatformInFile = platform => file => Object.assign({}, file, { platform })
 
 module.exports = [].concat(
-    general,
+  general,
   android.map(updatePlatformInFile('android')),
-  ios.map(updatePlatformInFile('ios'))
+  ios.map(updatePlatformInFile('ios')),
 )

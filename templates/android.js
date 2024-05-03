@@ -11,16 +11,16 @@ apply plugin: 'com.android.library'
 
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
-    compileSdkVersion safeExtGet('compileSdkVersion', 30)
-    buildToolsVersion safeExtGet('buildToolsVersion', '30.0.2')
+    compileSdkVersion safeExtGet('compileSdkVersion', 33)
+    buildToolsVersion safeExtGet('buildToolsVersion', '33.0.0')
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 21)
-        targetSdkVersion safeExtGet('targetSdkVersion', 30)
+        targetSdkVersion safeExtGet('targetSdkVersion', 33)
         versionCode 1
         versionName "1.0.0"
     }
@@ -81,7 +81,7 @@ public class ${className}Module extends ReactContextBaseJavaModule {
     @ReactMethod
     public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
         // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
+        callback.invoke(null, "Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
     }
 }
 `,

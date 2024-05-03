@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
   s.platforms    = { :ios => "10.0" }
-  s.source       = { :git => "https://github.com/${githubAccount}/${repoName}.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/ldrobot/${repoName}.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/${className}/**/*.{h,m,mm}"
   s.dependency "React-Core"
@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
 {
     // TODO: Implement some actually useful functionality
-    callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
+    callback(@[NSNull.null, [NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
 }
 
 @end

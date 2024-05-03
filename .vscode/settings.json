@@ -7,6 +7,6 @@
   "prettier.semi": false,
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
-  "prettier.printWidth": 120,
+  "prettier.printWidth": 100,
   "prettier.arrowParens": "avoid"
 }
