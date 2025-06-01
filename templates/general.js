@@ -80,7 +80,7 @@ export function lib(a: number, b: number) {
     content: ({ authorName, authorEmail }) => {
       return `MIT License
 
-Copyright (c) 2025 ldrobot.com
+Copyright (c) 2025 ${authorName} <${authorEmail}>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
